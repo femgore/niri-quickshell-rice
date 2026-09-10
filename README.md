@@ -1,8 +1,6 @@
-# Niri + Quickshell Rice
+# niri rice thing
 
-A portable Niri desktop configuration with a Quickshell bar/popup environment, Waybar helper scripts, wallpaper color integration, screenshot tooling, recording helpers, clipboard UI, media controls, and optional examples.
-
-This repository is for Niri. It does not require the original Hyprland rice.
+stupid fucking rice thing it uses quickshell for niri its kinda neat
 
 ## Gallery
 
@@ -16,7 +14,7 @@ Screenshots are kept in [`assets/screenshots`](./assets/screenshots).
   </tr>
 </table>
 
-## Features
+## Features (ai generated explanation cuz i got lazy as fuckkkkkkkkk)
 
 - Niri config with rounded windows, blur, workspace bindings, and focused-column workflow
 - Quickshell top bar, launcher, clipboard, music, volume, network, battery, calendar, wallpaper, settings, and utility panels
@@ -31,11 +29,11 @@ Screenshots are kept in [`assets/screenshots`](./assets/screenshots).
 
 ## Requirements
 
-The automatic installer is intended for **Arch Linux and Arch-based distributions such as CachyOS**.
+this shit works only for **arch and arch based distros**.
 
-It can install the missing core dependencies for you before installing the rice. If you prefer to manage packages yourself, run the installer with `--skip-dependencies`.
+it does its dependency bs on its own but you can lowk avoid that with `--skip-dependencies`.
 
-See [`docs/DEPENDENCIES.md`](./docs/DEPENDENCIES.md) for the full dependency notes and feature-specific packages.
+see [`docs/DEPENDENCIES.md`](./docs/DEPENDENCIES.md) for the full dependency notes
 
 ## Installation
 
