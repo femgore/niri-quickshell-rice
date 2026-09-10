@@ -581,7 +581,7 @@ Item {
         const dir = Quickshell.env("WALLPAPER_DIR")
         return (dir && dir !== "") 
         ? dir 
-        : Quickshell.env("HOME") + "/Pictures/Wallpapers"
+        : Quickshell.env("HOME") + "/.config/Wallpapers"
     }
 
     readonly property var transitions: ["simple", "fade", "left", "right", "top", "bottom", "wipe", "grow", "center", "outer", "random", "wave"]
