@@ -1,0 +1,68 @@
+// Generated from ~/.config/quickshell/settings.json
+// Do not edit by hand; edit through Imperative Settings.
+binds {
+    Alt+F4 repeat=false { close-window; }
+    Mod+Shift+Left { set-column-width "-50"; }
+    Mod+Shift+Up { set-window-height "-50"; }
+    Mod+Ctrl+Left repeat=false { move-column-left; }
+    Mod+Ctrl+Right repeat=false { move-column-right; }
+    Mod+Ctrl+Up repeat=false { move-window-up; }
+    Mod+Ctrl+Down repeat=false { move-window-down; }
+    Mod+Left repeat=false { spawn-sh "notify-send \"Unsupported Niri action\" 'movefocus j'"; }
+    Mod+Up repeat=false { focus-window-up; }
+    Mod+Down repeat=false { focus-window-down; }
+    Mod+T repeat=false { spawn-sh "firefox"; }
+    Mod+F repeat=false { toggle-window-floating; }
+    Mod+E repeat=false { spawn-sh "nautilus"; }
+    Mod+Shift+R repeat=false { spawn-sh "niri msg action do-screen-transition"; }
+    Mod+C repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh toggle clipboard"; }
+    Mod+P repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh toggle movies"; }
+    Mod+R repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle applauncher"; }
+    Mod+Shift+S repeat=false { spawn-sh "~/.config/niri/scripts/screenshot.sh --clipboard-only"; }
+    Mod+Shift+Q repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle music"; }
+    Mod+B repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle battery"; }
+    Mod+Shift+W repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle wallpaper"; }
+    Mod+S repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle calendar"; }
+    Mod+N repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle network"; }
+    Mod+Shift+T repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle focustime"; }
+    Mod+V repeat=false { spawn-sh "bash ~/.config/niri/scripts/qs_manager.sh toggle volume"; }
+    Caps_Lock repeat=false { spawn-sh "sleep 0.1 && swayosd-client --caps-lock"; }
+    XF86MonBrightnessDown repeat=false { spawn-sh "swayosd-client --brightness lower"; }
+    XF86MonBrightnessUp repeat=false { spawn-sh "swayosd-client --brightness raise"; }
+    Print repeat=false { spawn-sh "~/.config/niri/scripts/screenshot.sh"; }
+    Shift+Print repeat=false { spawn-sh "~/.config/niri/scripts/screenshot.sh --edit"; }
+    Mod+Print repeat=false { spawn-sh "~/.config/niri/scripts/screenshot.sh --full"; }
+    Mod+Shift+Print repeat=false { spawn-sh "~/.config/niri/scripts/screenshot.sh --full --edit"; }
+    XF86PowerOff repeat=false { spawn-sh "bash ~/.config/niri/scripts/lock.sh"; }
+    Mod+L { spawn-sh "bash ~/.config/niri/scripts/lock.sh"; }
+    Mod+Space repeat=false { spawn-sh "playerctl play-pause"; }
+    XF86AudioPause repeat=false { spawn-sh "playerctl play-pause"; }
+    XF86AudioPlay repeat=false { spawn-sh "playerctl play-pause"; }
+    XF86AudioMicMute repeat=false { spawn-sh "swayosd-client --input-volume mute-toggle"; }
+    XF86AudioMute repeat=false { spawn-sh "swayosd-client --output-volume mute-toggle"; }
+    XF86AudioLowerVolume { spawn-sh "swayosd-client --output-volume lower"; }
+    XF86AudioRaiseVolume { spawn-sh "swayosd-client --output-volume raise"; }
+    Mod+1 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 1"; }
+    Mod+2 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 2"; }
+    Mod+3 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 3"; }
+    Mod+4 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 4"; }
+    Mod+5 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 5"; }
+    Mod+6 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 6"; }
+    Mod+7 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 7"; }
+    Mod+8 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 8"; }
+    Mod+9 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 9"; }
+    Mod+0 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 10"; }
+    Mod+Shift+1 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 1 move"; }
+    Mod+Shift+2 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 2 move"; }
+    Mod+Shift+3 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 3 move"; }
+    Mod+Shift+4 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 4 move"; }
+    Mod+Shift+5 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 5 move"; }
+    Mod+Shift+6 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 6 move"; }
+    Mod+Shift+7 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 7 move"; }
+    Mod+Shift+8 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 8 move"; }
+    Mod+Shift+9 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 9 move"; }
+    Mod+Shift+0 repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh 10 move"; }
+    Mod+Tab repeat=false { focus-monitor-next; }
+    Ctrl+Shift+O repeat=false { spawn-sh "~/.config/niri/scripts/replay-toggle.sh"; }
+    Mod+Alt+O repeat=false { spawn-sh "~/.config/niri/scripts/replay-save.sh"; }
+}

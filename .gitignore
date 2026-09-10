@@ -1,0 +1,30 @@
+# Runtime and generated state
+*.log
+*.tmp
+*.cache
+__pycache__/
+*.py[cod]
+.env
+credentials.json
+
+# Local editor/system files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Personal media and captures
+assets/screenshots/*
+!assets/screenshots/.gitkeep
+
+# Backup files copied from live configs
+*.bak
+*.bak-*
+*.save
+*.pre-*
+
+# Vendored/private browser or downloader payloads
+vendor/
+extensions/
+QsWebEngineInit/
+*.so

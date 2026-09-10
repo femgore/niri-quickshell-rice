@@ -1,0 +1,15 @@
+// Generated from Pywal by Imperative color-engine bridge.
+layout {
+    border {
+        active-color "#817F80"
+        inactive-color "#666f5b"
+        urgent-color "#837D7A"
+    }
+    shadow { color "#141b0caa"; }
+    tab-indicator {
+        active-color "#817F80"
+        inactive-color "#666f5b"
+        urgent-color "#837D7A"
+    }
+}
+overview { backdrop-color "#141b0c"; }

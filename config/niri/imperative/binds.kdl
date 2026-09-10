@@ -1,0 +1,150 @@
+binds {
+    Alt+F4 { close-window; }
+
+    Super+Return { spawn "kitty"; }
+    Super+F { spawn "firefox"; }
+    Super+E { spawn "nautilus"; }
+
+    Super+Left  { focus-column-left; }
+    Super+Right { focus-column-right; }
+    Super+Up    { focus-window-up; }
+    Super+Down  { focus-window-down; }
+
+    Super+Ctrl+Left  { move-column-left; }
+    Super+Ctrl+Right { move-column-right; }
+    Super+Ctrl+Up    { move-window-up; }
+    Super+Ctrl+Down  { move-window-down; }
+
+    Super+Shift+Left  { set-column-width "-5%"; }
+    Super+Shift+Right { set-column-width "+5%"; }
+    Super+Shift+Up    { set-window-height "-5%"; }
+    Super+Shift+Down  { set-window-height "+5%"; }
+
+    Super+Shift+F { toggle-window-floating; }
+
+    Super+D {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle applauncher";
+    }
+
+    Super+C {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle clipboard";
+    }
+
+    Super+P {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle movies";
+    }
+
+    Super+Shift+S {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle settings";
+    }
+
+    Super+Q {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle music";
+    }
+
+    Super+B {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle battery";
+    }
+
+    Super+W {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle wallpaper";
+    }
+
+    Super+S {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle calendar";
+    }
+
+    Super+N {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle network";
+    }
+
+    Super+Shift+T {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle focustime";
+    }
+
+    Super+V {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle volume";
+    }
+
+    Super+H {
+        spawn "bash" "-lc" "~/.config/niri/scripts/qs_manager.sh toggle guide";
+    }
+
+    Super+L allow-when-locked=true {
+        spawn "bash" "-lc" "~/.config/niri/scripts/lock.sh";
+    }
+
+    Print {
+        spawn "bash" "-lc" "~/.config/niri/scripts/screenshot.sh";
+    }
+
+    Shift+Print {
+        spawn "bash" "-lc" "~/.config/niri/scripts/screenshot.sh --edit";
+    }
+
+    Super+Print {
+        spawn "bash" "-lc" "~/.config/niri/scripts/screenshot.sh --full";
+    }
+
+    Super+Shift+Print {
+        spawn "bash" "-lc" "~/.config/niri/scripts/screenshot.sh --full --edit";
+    }
+
+    XF86MonBrightnessDown {
+        spawn "swayosd-client" "--brightness" "lower";
+    }
+
+    XF86MonBrightnessUp {
+        spawn "swayosd-client" "--brightness" "raise";
+    }
+
+    XF86AudioMute {
+        spawn "swayosd-client" "--output-volume" "mute-toggle";
+    }
+
+    XF86AudioLowerVolume {
+        spawn "swayosd-client" "--output-volume" "lower";
+    }
+
+    XF86AudioRaiseVolume {
+        spawn "swayosd-client" "--output-volume" "raise";
+    }
+
+    XF86AudioMicMute {
+        spawn "swayosd-client" "--input-volume" "mute-toggle";
+    }
+
+    XF86AudioPlay {
+        spawn "playerctl" "play-pause";
+    }
+
+    XF86AudioPause {
+        spawn "playerctl" "play-pause";
+    }
+
+    Super+Space {
+        spawn "playerctl" "play-pause";
+    }
+
+    Super+1 { focus-workspace 1; }
+    Super+2 { focus-workspace 2; }
+    Super+3 { focus-workspace 3; }
+    Super+4 { focus-workspace 4; }
+    Super+5 { focus-workspace 5; }
+    Super+6 { focus-workspace 6; }
+    Super+7 { focus-workspace 7; }
+    Super+8 { focus-workspace 8; }
+    Super+9 { focus-workspace 9; }
+    Super+0 { focus-workspace 10; }
+
+    Super+Shift+1 { move-window-to-workspace 1; }
+    Super+Shift+2 { move-window-to-workspace 2; }
+    Super+Shift+3 { move-window-to-workspace 3; }
+    Super+Shift+4 { move-window-to-workspace 4; }
+    Super+Shift+5 { move-window-to-workspace 5; }
+    Super+Shift+6 { move-window-to-workspace 6; }
+    Super+Shift+7 { move-window-to-workspace 7; }
+    Super+Shift+8 { move-window-to-workspace 8; }
+    Super+Shift+9 { move-window-to-workspace 9; }
+    Super+Shift+0 { move-window-to-workspace 10; }
+}

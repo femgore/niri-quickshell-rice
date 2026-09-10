@@ -1,0 +1,7 @@
+// This file is rewritten by focus-mode.sh.
+// dotprofile disabled profile machine-feel block: layout {
+
+window-rule {
+    geometry-corner-radius 15
+    clip-to-geometry true
+}

@@ -1,0 +1,254 @@
+// ────────────────────────────────────────────────────────────────────
+//  「✦ NIRI CONFIG — HYPRLAND MUSCLE-MEMORY PORT ✦ 」
+//  Target: niri 26.04+ on CachyOS
+// ────────────────────────────────────────────────────────────────────
+
+layer-rule {
+    match namespace=r#"^(awww|awww-daemon|wallpaper)$"#
+    place-within-backdrop true
+}
+
+include "colors.kdl"
+// Niri 26.04 native blur, close to the old Hyprland blur.
+blur {
+    passes 2
+    offset 1
+    noise 0
+    saturation 1
+}
+
+// Keep the same desktop pieces, but use Niri-specific wrappers where needed.
+// spawn-at-startup "waybar" "-c" "~/.config/niri/waybar/config.jsonc" "-s" "~/.config/niri/waybar/style.css"
+spawn-at-startup "bash" "-lc" "~/.config/niri/imperative/start.sh"
+spawn-at-startup "swayosd-server"
+spawn-sh-at-startup "pkill -x awww-daemon 2>/dev/null || true; awww-daemon"
+spawn-at-startup "mako"
+spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-at-startup "~/.config/niri/scripts/niri-idle.sh"
+spawn-sh-at-startup "XDG_MENU_PREFIX=plasma- kbuildsycoca6"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
+spawn-at-startup "batsignal" "-b" "-w" "30" "-c" "20" "-d" "10"
+// Disabled by imperative-matugen-bridge: spawn-at-startup "~/.config/niri/scripts/generate-niri-colors.sh"
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    ELECTRON_ENABLE_WAYLAND "1"
+    XCURSOR_THEME "onymki"
+    XCURSOR_SIZE "30"
+}
+
+xwayland-satellite {
+    path "xwayland-satellite"
+}
+
+clipboard {
+    // Exact equivalent of your clear-primary loop, but native.
+    disable-primary
+}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    // Niri's native animations are already horizontal/workspace-aware.
+    slowdown 0.85
+}
+
+prefer-no-csd
+
+// Match Hyprland's rounded windows globally.
+window-rule {
+    geometry-corner-radius 15
+    clip-to-geometry true
+    draw-border-with-background false
+}
+// Kitty: float at the same 700×500 size as your Hyprland rule.
+window-rule {
+    match app-id=r#"(?i)^kitty$"#
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 600; }
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+// Keep picture-in-picture tiled, like the Hyprland rule.
+window-rule {
+    match title=r#"(?i)^picture[- ]in[- ]picture$"#
+    match title=r#"(?i)^picture in picture$"#
+    open-floating false
+}
+// Blur common semitransparent apps without lowering their opacity.
+window-rule {
+    match app-id=r#"(?i)^(kitty|org\.wezfurlong\.wezterm|Alacritty)$"#
+    background-effect {
+        blur true
+        xray true
+    }
+}
+window-rule {
+    match app-id=r#"(?i)zen.*"#
+}
+
+// Reproduce your Hyprland layer blur rules.
+layer-rule {
+    match namespace=r#"^waybar$"#
+    background-effect {
+        blur false
+        xray false
+    }
+    popups {
+        geometry-corner-radius 8
+        background-effect { blur true; }
+    }
+}
+
+layer-rule {
+    match namespace=r#"^(notifications|mako)$"#
+    geometry-corner-radius 12
+    background-effect {
+        blur false
+        xray false
+    }
+}
+
+layer-rule {
+    match namespace=r#"(?i)rofi"#
+    geometry-corner-radius 20
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+// Keep the wallpaper visible in Niri's overview and workspace transitions.
+layer-rule {
+    match namespace=r#"^(swww-daemon|wallpaper)$"# layer="background"
+    place-within-backdrop true
+}
+overview {
+    workspace-shadow {
+        off
+    }
+}
+// Focus mode writes live overrides here. Normal defaults are pre-generated.
+include "focus-mode.kdl"
+
+binds {
+    Alt+F4 repeat=false { close-window; }
+
+    // GENERAL — same muscle memory as Hyprland.
+    Mod+F repeat=false { toggle-window-floating; }
+    Mod+Y repeat=false { maximize-column; }
+    Mod+Shift+F repeat=false { fullscreen-window; }
+    Mod+O repeat=false { toggle-overview; }
+
+    // SCREENSHOTS / COLOR PICKER
+    Print repeat=false {
+        screenshot-screen;
+    }
+
+    Mod+Shift+S repeat=false {
+        spawn "~/.config/niri/scripts/frozen-screenshot.sh";
+    }
+
+    Mod+P repeat=false { spawn "~/.config/niri/scripts/color-picker.sh"; }
+
+    // ROFI
+    Mod+R repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh toggle applauncher"; }
+    Mod+Shift+P repeat=false { spawn-sh "notify-send 'Profile switcher' 'No portable profile switcher is configured.'"; }
+    Mod+Shift+W repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh toggle wallpaper"; }
+    Mod+V repeat=false { spawn-sh "~/.config/niri/scripts/qs_manager.sh toggle clipboard"; }
+    Mod+Period repeat=false { spawn-sh "rofi -show emoji"; }
+    Mod+Shift+Return repeat=false { spawn "~/.config/niri/scripts/power-menu.sh"; }
+    Mod+Shift+G repeat=false { spawn-sh "notify-send 'Shader picker' 'Niri has no Hyprland GLSL shader equivalent.'"; }
+
+    // WAYBAR / CUSTOM SCRIPTS
+    Mod+B repeat=false { spawn "~/.config/niri/scripts/waybar-toggle.sh"; }
+    Mod+Shift+B repeat=false { spawn "~/.config/niri/scripts/waybar-restart.sh"; }
+    Mod+G repeat=false { spawn "~/.config/niri/scripts/focus-mode.sh"; }
+    Mod+Shift+R repeat=false { spawn-sh "~/.config/niri/scripts/screenshot.sh --record"; }
+
+    // POWER
+    Alt+L repeat=false allow-inhibiting=false { spawn-sh "hyprlock -c ~/.config/niri/hyprlock.conf"; }
+    Alt+S repeat=false { spawn-sh "hyprlock -c ~/.config/niri/hyprlock.conf & sleep 0.5 && systemctl suspend"; }
+    Alt+E repeat=false { quit; }
+
+    // APPS
+    Mod+Q repeat=false { spawn "kitty"; }
+    Mod+E repeat=false { spawn "dolphin"; }
+
+    // MOVE FOCUS
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+K { focus-window-up; }
+    Mod+J { focus-window-down; }
+
+    // MOVE FOCUSED WINDOW / COLUMN
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+J { move-window-down; }
+
+    // WORKSPACES
+    Mod+1 repeat=false { focus-workspace "1"; }
+    Mod+2 repeat=false { focus-workspace "2"; }
+    Mod+3 repeat=false { focus-workspace "3"; }
+    Mod+4 repeat=false { focus-workspace "4"; }
+    Mod+5 repeat=false { focus-workspace "5"; }
+    Mod+6 repeat=false { focus-workspace "6"; }
+    Mod+7 repeat=false { focus-workspace "7"; }
+    Mod+8 repeat=false { focus-workspace "8"; }
+    Mod+9 repeat=false { focus-workspace "9"; }
+    // Hold Super and use the vertical mouse wheel to move horizontally
+    // through columns inside the current workspace.
+    Mod+WheelScrollUp cooldown-ms=100 {
+        focus-column-left;
+    }
+
+    Mod+WheelScrollDown cooldown-ms=100 {
+        focus-column-right;
+    }
+    Mod+Shift+1 repeat=false { move-window-to-workspace "1"; }
+    Mod+Shift+2 repeat=false { move-window-to-workspace "2"; }
+    Mod+Shift+3 repeat=false { move-window-to-workspace "3"; }
+    Mod+Shift+4 repeat=false { move-window-to-workspace "4"; }
+    Mod+Shift+5 repeat=false { move-window-to-workspace "5"; }
+    Mod+Shift+6 repeat=false { move-window-to-workspace "6"; }
+    Mod+Shift+7 repeat=false { move-window-to-workspace "7"; }
+    Mod+Shift+8 repeat=false { move-window-to-workspace "8"; }
+    Mod+Shift+9 repeat=false { move-window-to-workspace "9"; }
+
+    // Special workspace approximation.
+    Mod+Space repeat=false { spawn "~/.config/niri/scripts/toggle-magic.sh"; }
+    Mod+Shift+Space repeat=false { spawn-sh "niri msg action move-window-to-workspace magic && niri msg action focus-workspace magic"; }
+
+    // MOVE / RESIZE
+    Mod+Ctrl+L { set-column-width "+30"; }
+    Mod+Ctrl+H { set-column-width "-30"; }
+    Mod+Ctrl+K { set-window-height "-30"; }
+    Mod+Ctrl+J { set-window-height "+30"; }
+
+    // Useful Niri-native actions that don't disturb your old binds.
+    Mod+BracketLeft { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+C { center-column; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // MULTIMEDIA
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%-"; }
+}
+include "imperative/generated-binds.kdl"
+include "imperative/generated-scale.kdl"
