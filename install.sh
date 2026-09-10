@@ -252,7 +252,7 @@ install_path config/waybar/scripts "$CONFIG_HOME/waybar/scripts"
 
 if [ "$WITH_WALLPAPERS" -eq 1 ]; then
     run mkdir -p "$HOME/Pictures"
-    install_path assets/wallpapers "$HOME/Pictures/Wallpapers"
+    install_path assets/wallpapers "$CONFIG_HOME/Wallpapers"
 fi
 
 if [ "$WITH_HYPRLAND_COMPAT" -eq 1 ]; then
