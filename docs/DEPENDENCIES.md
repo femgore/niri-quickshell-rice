@@ -20,6 +20,8 @@ Package names below use Arch/CachyOS naming where practical. Other distributions
 | `playerctl` | Media controls |
 | `kitty` | Default terminal binding |
 
+The included Kitty config expects a Nerd Font-compatible monospace family. It defaults to JetBrains Mono.
+
 ## Feature-Specific
 
 | Program | Feature |

@@ -12,11 +12,11 @@ get_workspace_count() {
     local count
 
     count="$(
-        jq -r '.workspaceCount // 8' "$SETTINGS_FILE" 2>/dev/null
+        jq -r '.workspaceCount // 5' "$SETTINGS_FILE" 2>/dev/null
     )"
 
     if [[ ! "$count" =~ ^[0-9]+$ ]]; then
-        count=8
+        count=5
     fi
 
     printf '%s\n' "$count"

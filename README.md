@@ -14,6 +14,8 @@ Add screenshots to `assets/screenshots/` after reviewing them for private inform
 - Quickshell top bar, launcher, clipboard, music, volume, network, battery, calendar, wallpaper, settings, and utility panels
 - Screenshot overlay with region capture, editing, QR scanning, and recording support
 - Pywal/Matugen-backed color generation for Niri and Quickshell
+- Kitty config with transparency and generated Pywal colors
+- Included wallpaper collection under `assets/wallpapers`
 - Optional Waybar config and helper scripts
 - Safe installer with backup and dry-run support
 - Optional personal and gaming examples kept out of the default install
@@ -48,7 +50,9 @@ The installer copies:
 
 - `config/niri` to `~/.config/niri`
 - `config/quickshell` to `~/.config/quickshell`
+- `config/kitty` to `~/.config/kitty`
 - `config/waybar/scripts` to `~/.config/waybar/scripts`
+- `assets/wallpapers` to `~/Pictures/Wallpapers`
 
 Conflicting existing paths are moved under:
 
@@ -61,8 +65,11 @@ Conflicting existing paths are moved under:
 ```fish
 cp -a config/niri ~/.config/niri
 cp -a config/quickshell ~/.config/quickshell
+cp -a config/kitty ~/.config/kitty
 mkdir -p ~/.config/waybar
 cp -a config/waybar/scripts ~/.config/waybar/scripts
+mkdir -p ~/Pictures
+cp -a assets/wallpapers ~/Pictures/Wallpapers
 ```
 
 Back up existing directories before running those commands manually.
@@ -88,7 +95,7 @@ Important defaults:
 | `Print` | Screenshot |
 | `Mod+H/J/K/L` | Move focus |
 | `Mod+Shift+H/J/K/L` | Move window or column |
-| `Mod+1..9` | Focus workspace |
+| `Mod+1..5` | Focus workspace |
 
 ## Configuration Layout
 
@@ -98,6 +105,7 @@ The main files are:
 
 - `config/niri/config.kdl`
 - `config/niri/scripts/`
+- `config/kitty/kitty.conf`
 - `config/quickshell/Shell.qml`
 - `config/quickshell/settings.json`
 - `config/waybar/scripts/`

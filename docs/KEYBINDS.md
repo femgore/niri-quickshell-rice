@@ -48,7 +48,7 @@
 
 | Key | Action | Dependency |
 | --- | --- | --- |
-| `Mod+1` through `Mod+9` | Focus workspace 1-9 | Niri |
+| `Mod+1` through `Mod+5` | Focus workspace 1-5 | Niri |
 | `Mod+0` | Focus workspace 10 from generated settings | Niri |
 | `Mod+Shift+1` through `Mod+Shift+9` | Move focused window to workspace 1-9 | Niri |
 | `Mod+Shift+0` | Move focused window to workspace 10 from generated settings | Niri |

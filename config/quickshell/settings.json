@@ -2,7 +2,7 @@
   "uiScale": 1,
   "openGuideAtStartup": false,
   "topbarHelpIcon": false,
-  "workspaceCount": 8,
+  "workspaceCount": 5,
   "language": "",
   "kbOptions": "",
   "monitors": [],
@@ -377,46 +377,6 @@
     },
     {
       "type": "bind",
-      "mods": "$mainMod",
-      "key": "6",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 6",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod",
-      "key": "7",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 7",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod",
-      "key": "8",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 8",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod",
-      "key": "9",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 9",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod",
-      "key": "0",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 10",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "1",
       "dispatcher": "exec",
@@ -453,46 +413,6 @@
       "key": "5",
       "dispatcher": "exec",
       "command": "~/.config/niri/scripts/qs_manager.sh 5 move",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod SHIFT",
-      "key": "6",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 6 move",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod SHIFT",
-      "key": "7",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 7 move",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod SHIFT",
-      "key": "8",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 8 move",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod SHIFT",
-      "key": "9",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 9 move",
-      "isEditing": false
-    },
-    {
-      "type": "bind",
-      "mods": "$mainMod SHIFT",
-      "key": "0",
-      "dispatcher": "exec",
-      "command": "~/.config/niri/scripts/qs_manager.sh 10 move",
       "isEditing": false
     },
     {

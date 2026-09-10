@@ -78,7 +78,7 @@ Variants {
             property bool forceUpdateShow: false
             property bool isUpdateVisible: updateAvailable || forceUpdateShow
             
-            property int workspaceCount: 8
+            property int workspaceCount: 5
             
             property string activeWidget: "" 
             property bool isSettingsOpen: activeWidget === "settings"
@@ -291,7 +291,7 @@ Variants {
 
             Process {
                 id: wsDaemon
-                command: ["bash", "-c", "~/.config/niri/scripts/workspaces.sh"]
+                command: ["bash", "-c", "~/.config/niri/imperative/scripts/workspaces.sh"]
                 running: true
             }
 
