@@ -34,12 +34,9 @@ Core install:
   config/niri            -> ~/.config/niri
   config/quickshell      -> ~/.config/quickshell
   config/kitty           -> ~/.config/kitty
-  config/waybar/scripts  -> ~/.config/waybar/scripts
 
 Optional:
   assets/wallpapers      -> ~/Pictures/Wallpapers
-  optional/hyprland-compat/waybar/scripts
-                          -> ~/.config/waybar/scripts-hyprland-compat
 
 Existing conflicting paths are moved to:
   ~/.local/state/niri-quickshell-rice/backups/
@@ -135,7 +132,6 @@ say "Core configuration is always installed:"
 say "  - Niri"
 say "  - Quickshell"
 say "  - Kitty"
-say "  - Waybar helper scripts"
 say ""
 say "Optional features:"
 
@@ -189,15 +185,10 @@ else
     set -- \
         config/niri \
         config/quickshell \
-        config/kitty \
-        config/waybar/scripts
+        config/kitty \s
 
     if [ "$WITH_WALLPAPERS" -eq 1 ]; then
         set -- "$@" assets/wallpapers
-    fi
-
-    if [ "$WITH_HYPRLAND_COMPAT" -eq 1 ]; then
-        set -- "$@" optional/hyprland-compat/waybar/scripts
     fi
 
     git -C "$SOURCE_DIR" sparse-checkout set "$@"
@@ -247,18 +238,10 @@ say "Installing selected files..."
 install_path config/niri "$CONFIG_HOME/niri"
 install_path config/quickshell "$CONFIG_HOME/quickshell"
 install_path config/kitty "$CONFIG_HOME/kitty"
-run mkdir -p "$CONFIG_HOME/waybar"
-install_path config/waybar/scripts "$CONFIG_HOME/waybar/scripts"
 
 if [ "$WITH_WALLPAPERS" -eq 1 ]; then
     run mkdir -p "$HOME/Pictures"
     install_path assets/wallpapers "$CONFIG_HOME/Wallpapers"
-fi
-
-if [ "$WITH_HYPRLAND_COMPAT" -eq 1 ]; then
-    install_path \
-        optional/hyprland-compat/waybar/scripts \
-        "$CONFIG_HOME/waybar/scripts-hyprland-compat"
 fi
 
 say ""
